@@ -33,7 +33,7 @@ Cette baseline sert de référence pendant toute la mission.
 ### 2. Suivi physiologique
 
 Pour le prototype, les données sont **simulées**, générées par un
-Raspberry Pi qui joue le rôle de collecteur de capteurs.
+Arduino Yùn qui joue le rôle de collecteur de capteurs.
 
 GRAVITY stocke leur évolution et calcule notamment : l'écart avec la
 baseline ; les tendances sur 7 / 30 / 90 jours ; les dégradations
