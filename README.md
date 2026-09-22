@@ -5,9 +5,13 @@ Nous sommes dans la seconde moitié du XXIe siècle. Après avoir établi des ba
 ## Le défi
 
 Chaque vaisseau comprend plusieurs équipages. Chaque équipage doit proposer une solution pour répondre à l’un des 4 grands piliers décrits ci-après (idéalement au sein d’un même vaisseau, chaque pilier doit être traité par au moins un équipage) :
+
 Pilier 1 : HumanTech & HealthTech
+
 Pilier 2 : FoodTech & AgriTech
+
 Pilier 3 : EnergyTech & SmartGrid
+
 Pilier 4 : DeepTech & Secure Systems
 
 ### Groupe
