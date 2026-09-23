@@ -1,0 +1,167 @@
+﻿<Window x:Class="GravityDashboard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="GRAVITY Dashboard" Width="1150" Height="720"
+        Background="#FF0B0F17" Foreground="White" FontFamily="Segoe UI">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FF16324F"/>
+            <Setter Property="Foreground" Value="#FF00E5FF"/>
+            <Setter Property="BorderBrush" Value="#FF00E5FF"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style TargetType="TabItem">
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="#FF111827"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF1F2937"/>
+            <Setter Property="RowBackground" Value="#FF111827"/>
+            <Setter Property="AlternatingRowBackground" Value="#FF0F172A"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="GridLinesVisibility" Value="None"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- ===== Barre superieure : URL API + connexion ===== -->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,10">
+            <TextBlock Text="GRAVITY" FontSize="22" FontWeight="Bold" Foreground="#FF00E5FF" VerticalAlignment="Center"/>
+            <TextBlock Text="  //  Poste de commandement" FontSize="13" Foreground="#FF6B7280" VerticalAlignment="Center"/>
+            <TextBlock Text="URL API :" Margin="25,0,6,0" VerticalAlignment="Center"/>
+            <TextBox x:Name="ApiUrlBox" Width="250" Text="http://100.64.0.1:8000" VerticalAlignment="Center"
+                     Background="#FF111827" Foreground="White" BorderBrush="#FF374151" Padding="4"/>
+            <Button x:Name="ConnectButton" Content="Connecter" Click="ConnectButton_Click" Margin="8,0,0,0"/>
+            <Ellipse x:Name="StatusDot" Width="10" Height="10" Fill="#FFEF4444" Margin="12,0,0,0" VerticalAlignment="Center"/>
+            <TextBlock x:Name="StatusText" Text="Hors ligne" VerticalAlignment="Center" Margin="6,0,0,0"/>
+        </StackPanel>
+
+        <TabControl Grid.Row="1" Background="Transparent" BorderBrush="#FF1F2937">
+
+            <!-- ======== ONGLET EQUIPAGE ======== -->
+            <TabItem Header="Équipage">
+                <Grid Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="CrewList" SelectionChanged="CrewList_SelectionChanged"
+                             Background="#FF111827" Foreground="#FFC9D1D9" BorderBrush="#FF374151"/>
+                    <Grid Grid.Column="1" Margin="12,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                            <TextBlock x:Name="CrewTitle" Text="Sélectionner un membre" FontSize="16" Foreground="White" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                            <TextBlock Text="Score global :" Margin="30,0,8,0" VerticalAlignment="Center" Foreground="White"/>
+                            <TextBlock x:Name="ScoreText" Text="—" FontSize="22" FontWeight="Bold" Foreground="#FF00E5FF" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <DataGrid x:Name="IndicatorsGrid" Grid.Row="1">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Indicateur" Binding="{Binding Ind}" Width="*"/>
+                                <DataGridTextColumn Header="Valeur" Binding="{Binding Valeur}" Width="110"/>
+                                <DataGridTextColumn Header="Baseline" Binding="{Binding Baseline}" Width="110"/>
+                                <DataGridTextColumn Header="Écart %" Binding="{Binding EcartPct}" Width="110"/>
+                                <DataGridTextColumn Header="État" Binding="{Binding Etat}" Width="120">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Etat}" Value="OK">
+                                                    <Setter Property="Foreground" Value="#FF22C55E"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Etat}" Value="Surveillance">
+                                                    <Setter Property="Foreground" Value="#FFF59E0B"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Etat}" Value="Critique">
+                                                    <Setter Property="Foreground" Value="#FFEF4444"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <!-- ======== ONGLET ALERTES ======== -->
+            <TabItem Header="Alertes">
+                <DataGrid x:Name="AlertsGrid" Margin="8">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Crew" Binding="{Binding CrewId}" Width="70"/>
+                        <DataGridTextColumn Header="Indicateur" Binding="{Binding Indicator}" Width="160"/>
+                        <DataGridTextColumn Header="Niveau" Binding="{Binding Level}" Width="110">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Level}" Value="critical">
+                                            <Setter Property="Foreground" Value="#FFEF4444"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Level}" Value="alert">
+                                            <Setter Property="Foreground" Value="#FFF59E0B"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Level}" Value="tendance">
+                                            <Setter Property="Foreground" Value="#FF00E5FF"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Message" Binding="{Binding Message}" Width="4*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+            <!-- ======== ONGLET GRAVITY AI ======== -->
+            <TabItem Header="GRAVITY AI">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="ChatList" Background="#FF0B0F17" BorderBrush="#FF1F2937">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="White" BorderBrush="#FF374151" BorderThickness="1"
+                                        CornerRadius="8" Padding="10" Margin="4"
+                                        HorizontalAlignment="{Binding Align}" MaxWidth="640">
+                                    <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Grid Grid.Row="1" Margin="0,8,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="ChatInput" VerticalAlignment="Center" Padding="6"
+                                 Background="#FF111827" Foreground="#FFC9D1D9" BorderBrush="#FF374151"
+                                 KeyDown="ChatInput_KeyDown"/>
+                        <Button Grid.Column="1" Content="Envoyer" Click="SendButton_Click" Margin="8,0,0,0"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
+    
