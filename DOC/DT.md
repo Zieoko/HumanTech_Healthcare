@@ -1,6 +1,7 @@
 # Gravity
 
 ## Sommaire
+0. [Groupe](#groupe)
 1. [Objectif](#objectif)
 2. [Fonctionnement](#fonctionnement)
 3. [Architecture](#architecture)
@@ -10,6 +11,19 @@
 7. [Simulation](#simulation)
 8. [Principe de résilience](#principe-de-résilience)
 9. [Synthèse](#synthèse)
+
+
+## Groupe <a name="groupe"></a>
+
+<p>
+<strong>Équipe Projet GRAVITY - Workshop 2026 (B3 BDD / IA) :</strong>
+<ul>
+   <li>Tasnim Alioui</li>
+   <li>Rémi Pernak</li>
+   <li>Imran Lamkadem</li>
+   <li>Thomas Lesage</li>
+</ul>
+</p>
 
 ## Objectif <a name="objectif"></a>
 
