@@ -1,0 +1,60 @@
+{
+  "version": 2,
+  "dgSpecHash": "pnzTT0g5APc=",
+  "success": true,
+  "projectFilePath": "C:\\MarlowDev\\GravityDashboard\\GravityDashboard\\GravityDashboard.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\thoma\\.nuget\\packages\\harfbuzzsharp\\8.3.0.1\\harfbuzzsharp.8.3.0.1.nupkg.sha512",
+    "C:\\Users\\thoma\\.nuget\\packages\\harfbuzzsharp.nativeassets.macos\\8.3.0.1\\harfbuzzsharp.nativeassets.macos.8.3.0.1.nupkg.sha512",
+    "C:\\Users\\thoma\\.nuget\\packages\\harfbuzzsharp.nativeassets.win32\\8.3.0.1\\harfbuzzsharp.nativeassets.win32.8.3.0.1.nupkg.sha512",
+    "C:\\Users\\thoma\\.nuget\\packages\\livechartscore\\2.0.0-rc5.4\\livechartscore.2.0.0-rc5.4.nupkg.sha512",
+    "C:\\Users\\thoma\\.nuget\\packages\\livechartscore.skiasharpview\\2.0.0-rc5.4\\livechartscore.skiasharpview.2.0.0-rc5.4.nupkg.sha512",
+    "C:\\Users\\thoma\\.nuget\\packages\\livechartscore.skiasharpview.wpf\\2.0.0-rc5.4\\livechartscore.skiasharpview.wpf.2.0.0-rc5.4.nupkg.sha512",
+    "C:\\Users\\thoma\\.nuget\\packages\\opentk\\3.3.1\\opentk.3.3.1.nupkg.sha512",
+    "C:\\Users\\thoma\\.nuget\\packages\\opentk.glwpfcontrol\\3.3.0\\opentk.glwpfcontrol.3.3.0.nupkg.sha512",
+    "C:\\Users\\thoma\\.nuget\\packages\\skiasharp\\3.116.1\\skiasharp.3.116.1.nupkg.sha512",
+    "C:\\Users\\thoma\\.nuget\\packages\\skiasharp.harfbuzz\\3.116.1\\skiasharp.harfbuzz.3.116.1.nupkg.sha512",
+    "C:\\Users\\thoma\\.nuget\\packages\\skiasharp.nativeassets.macos\\3.116.1\\skiasharp.nativeassets.macos.3.116.1.nupkg.sha512",
+    "C:\\Users\\thoma\\.nuget\\packages\\skiasharp.nativeassets.win32\\3.116.1\\skiasharp.nativeassets.win32.3.116.1.nupkg.sha512",
+    "C:\\Users\\thoma\\.nuget\\packages\\skiasharp.views.desktop.common\\3.116.1\\skiasharp.views.desktop.common.3.116.1.nupkg.sha512",
+    "C:\\Users\\thoma\\.nuget\\packages\\skiasharp.views.wpf\\3.116.1\\skiasharp.views.wpf.3.116.1.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "message": "Le package 'OpenTK 3.3.1' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net8.0-windows7.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
+      "projectPath": "C:\\MarlowDev\\GravityDashboard\\GravityDashboard\\GravityDashboard.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\MarlowDev\\GravityDashboard\\GravityDashboard\\GravityDashboard.csproj",
+      "libraryId": "OpenTK",
+      "targetGraphs": [
+        "net8.0-windows"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "message": "Le package 'OpenTK.GLWpfControl 3.3.0' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net8.0-windows7.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
+      "projectPath": "C:\\MarlowDev\\GravityDashboard\\GravityDashboard\\GravityDashboard.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\MarlowDev\\GravityDashboard\\GravityDashboard\\GravityDashboard.csproj",
+      "libraryId": "OpenTK.GLWpfControl",
+      "targetGraphs": [
+        "net8.0-windows"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "message": "Le package 'SkiaSharp.Views.WPF 3.116.1' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net8.0-windows7.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
+      "projectPath": "C:\\MarlowDev\\GravityDashboard\\GravityDashboard\\GravityDashboard.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\MarlowDev\\GravityDashboard\\GravityDashboard\\GravityDashboard.csproj",
+      "libraryId": "SkiaSharp.Views.WPF",
+      "targetGraphs": [
+        "net8.0-windows"
+      ]
+    }
+  ]
+}
