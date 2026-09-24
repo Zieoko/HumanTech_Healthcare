@@ -1,0 +1,19 @@
+GRAVITY
+
+Sommaire
+
+groupe
+
+idée
+
+objectif
+
+fonctionnement :
+
+- bdd
+- Arduino
+- dashboard & IA
+
+Organisation
+
+Synthese
