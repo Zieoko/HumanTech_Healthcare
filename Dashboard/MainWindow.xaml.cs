@@ -27,8 +27,6 @@ public partial class MainWindow : Window
     private string? _url;
     private readonly Dictionary<string, ObservableCollection<DateTimePoint>> _crewPoints = new();
     private readonly Dictionary<string, LineSeries<DateTimePoint>> _crewSeries = new();
-
-    // ligne de reference : la baseline, en pointilles
     private readonly ObservableCollection<DateTimePoint> _baselinePoints = new();
     private readonly LineSeries<DateTimePoint> _baselineSeries;
 
@@ -79,7 +77,7 @@ public partial class MainWindow : Window
         {
             new Axis
             {
-                Name = "bpm",     // remplace par l'unite de l'indicateur courant (mis a jour au changement)
+                Name = "bpm",
                 NamePaint = new SolidColorPaint(new SKColor(0x8F, 0xB8, 0xD9)),
                 LabelsPaint = new SolidColorPaint(new SKColor(0x8F, 0xB8, 0xD9)),
                 SeparatorsPaint = new SolidColorPaint(new SKColor(0x1E, 0x3A, 0x55)) { StrokeThickness = 1 },
@@ -123,7 +121,7 @@ public partial class MainWindow : Window
             var crews = await _api.GetCrewsAsync();
             CrewList.ItemsSource = crews;
             StatusDot.Fill = new SolidColorBrush(Color.FromRgb(0x2E, 0xE6, 0xA8));
-            StatusText.Text = $"En ligne — {crews.Count} membre(s)";
+            StatusText.Text = $"En ligne : {crews.Count} membre(s)";
             _timer.Start();
             await RefreshAsync();
             await LoadHistoriqueAsync();
@@ -168,8 +166,8 @@ public partial class MainWindow : Window
                 if (st != null)
                 {
                     _lastStatus = st;
-                    CrewTitle.Text = $"{st.Name} — {_selected.Role}";
-                    ScoreText.Text = (st.ScoreGlobal?.ToString("0.0") ?? "—") + " %";
+                    CrewTitle.Text = $"{st.Name} {_selected.Role}";
+                    ScoreText.Text = (st.ScoreGlobal?.ToString("0.0") ?? "") + " %";
                     IndicatorsGrid.ItemsSource = st.Indicateurs
                         .Select(kv => new IndicatorRow(kv))
                         .ToList();
@@ -276,7 +274,7 @@ public partial class MainWindow : Window
         var unite = Labels.Unit(_currentIndicatorKey);
         var txt = Labels.Fr(_currentIndicatorKey) + (unite.Length > 0 ? $" ({unite})" : "");
         if (_baselineSeries.IsVisible && _baselinePoints.Count > 0)
-            txt += $"   —   baseline : {_baselinePoints[0].Value:0.0} {unite} (pointillés)";
+            txt += $"   baseline : {_baselinePoints[0].Value:0.0} {unite} (pointillés)";
         ChartInfo.Text = txt;
     }
 
